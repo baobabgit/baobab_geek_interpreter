@@ -1,3 +1,60 @@
+## 2026-01-21 17:33:21
+
+### Modifications
+- **[Phase 2]** Implémentation complète des types de base et structures de données
+- Création de `src/baobab_geek_interpreter/lexical/__init__.py` avec exports
+- Création de `src/baobab_geek_interpreter/lexical/token_type.py` :
+  - Énumération `TokenType` avec tous les types de tokens (INT, FLOAT, STRING, IDENTIFIANT, LPAREN, RPAREN, LBRACKET, RBRACKET, COMMA, EOF)
+  - Méthode `__str__()` pour représentation lisible
+  - Documentation complète avec docstrings
+- Création de `src/baobab_geek_interpreter/lexical/token.py` :
+  - Classe `Token` avec attributs : token_type, value, position, line, column
+  - Méthodes `__repr__()`, `__str__()`, `__eq__()` pour manipulation et comparaison
+  - Documentation exhaustive avec exemples
+- Création de `src/baobab_geek_interpreter/syntax/__init__.py` avec exports
+- Création de `src/baobab_geek_interpreter/syntax/ast_node.py` :
+  - Interface abstraite `ASTVisitor` pour le pattern Visitor
+  - Classe abstraite `ASTNode` (base pour tous les nœuds)
+  - Classe `ServiceCallNode` pour les appels de service
+  - Classe `ArgumentNode` pour les arguments
+  - Classe abstraite `ConstantNode` (base pour les constantes)
+  - Classe `IntNode` pour les entiers
+  - Classe `FloatNode` pour les flottants
+  - Classe `StringNode` pour les chaînes
+  - Classe `ArrayNode` pour les tableaux
+  - Implémentation complète du pattern Visitor avec méthode `accept()`
+- Création des tests unitaires exhaustifs :
+  - `tests/test_baobab_geek_interpreter/lexical/test_token_type.py` (15 tests)
+  - `tests/test_baobab_geek_interpreter/lexical/test_token.py` (20 tests)
+  - `tests/test_baobab_geek_interpreter/syntax/test_ast_node.py` (38 tests)
+- Total : **73 tests unitaires, tous passent** ✅
+- Correction du paramètre `type` → `token_type` pour éviter conflit avec built-in
+- Validation de la qualité du code :
+  - ✅ black (formatage)
+  - ✅ pylint (score 10/10)
+  - ✅ mypy (pas d'erreur)
+  - ✅ flake8 (pas d'erreur)
+  - ✅ bandit (aucun problème de sécurité)
+
+### Buts
+- Compléter la Phase 2 du plan de développement (Types de base et structures de données)
+- Fournir une base solide pour l'analyse lexicale et syntaxique
+- Définir une représentation AST complète et extensible
+- Implémenter le pattern Visitor pour faciliter le traitement de l'AST
+- Maintenir une qualité de code irréprochable (10/10)
+
+### Impact
+- **Phase 2 complétée** : Tous les types de base et l'AST sont implémentés
+- Infrastructure prête pour la Phase 3 (Analyseur lexical)
+- Pattern Visitor permettra d'ajouter facilement de nouveaux traitements sur l'AST
+- 73 tests supplémentaires garantissent la fiabilité (total : 118 tests)
+- Les tokens peuvent maintenant être créés et manipulés
+- L'AST peut représenter tous les éléments du langage selon les spécifications
+- Le projet avance méthodiquement selon le plan de développement
+- Qualité maintenue à 10/10 pylint
+
+---
+
 ## 2026-01-21 17:22:39
 
 ### Modifications
