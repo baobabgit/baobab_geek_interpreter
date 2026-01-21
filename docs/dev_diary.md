@@ -1,3 +1,78 @@
+## 2026-01-21 23:22:50
+
+### Modifications
+- **[Phase 6]** Implémentation complète de la table des symboles et du décorateur @service
+- Création du module `execution` :
+  - `src/baobab_geek_interpreter/execution/service_decorator.py` :
+    - Décorateur `@service` pour marquer les fonctions comme services
+    - Ajoute l'attribut `_is_service` (True) aux fonctions décorées
+    - Ajoute l'attribut `_service_name` (nom de la fonction)
+    - Préserve le nom et la docstring de la fonction originale avec `@wraps`
+    - Support complet des signatures de fonctions (args, kwargs, *args, **kwargs)
+    - Typage générique avec TypeVar pour préserver le type de retour
+- Création du module `semantic` :
+  - `src/baobab_geek_interpreter/semantic/symbol_table.py` :
+    - Classe `SymbolTable` pour gérer les services enregistrés
+    - `register(name, func)` : enregistre un service manuellement
+    - `get(name)` : récupère un service par son nom (retourne None si inexistant)
+    - `has(name)` : vérifie l'existence d'un service
+    - `list_services()` : liste tous les noms de services enregistrés
+    - `discover_services(module)` : découverte automatique des services dans un module
+    - `clear()` : vide la table des symboles
+    - Utilise `inspect.getmembers()` pour la découverte automatique
+    - Enregistre uniquement les callables avec `_is_service = True`
+- Mise à jour des `__init__.py` pour exporter les nouvelles classes
+- Création des tests unitaires exhaustifs :
+  - `tests/test_baobab_geek_interpreter/execution/test_service_decorator.py` (15 tests)
+    - Tests des attributs ajoutés (_is_service, _service_name)
+    - Tests d'exécution (args, kwargs, *args, **kwargs)
+    - Tests de préservation (nom, docstring)
+    - Tests avec fonctions multiples
+    - Tests avec valeurs de retour et exceptions
+    - Tests avec effets de bord et types complexes
+  - `tests/test_baobab_geek_interpreter/semantic/test_symbol_table.py` (25 tests)
+    - Tests de base (création, table vide)
+    - Tests d'enregistrement (simple, multiple, écrasement, lambda)
+    - Tests de récupération (existant, inexistant, fonction correcte)
+    - Tests d'existence (has)
+    - Tests de listage (vide, un service, multiples)
+    - Tests de découverte automatique (module, ignore non-services, module vide)
+    - Tests de clear (table vide, suppression, réenregistrement)
+    - Tests d'intégration (workflow complet, multiples modules)
+- Total : **40 tests unitaires, tous passent** ✅
+- Couverture des modules Phase 6 : **100%** ✅
+- Validation de la qualité du code :
+  - ✅ black (formatage, aucun changement nécessaire)
+  - ✅ pylint (score 10.00/10, désactivation de `protected-access` pour `_is_service`)
+  - ✅ mypy (aucune erreur de typage)
+  - ✅ flake8 (aucune violation PEP 8)
+  - ✅ bandit (aucun problème de sécurité, 156 lignes scannées)
+
+### Buts
+- Compléter la Phase 6 du plan de développement (Table des symboles et décorateur)
+- Fournir un système de gestion des services fonctionnel
+- Permettre l'enregistrement manuel et la découverte automatique des services
+- Implémenter un décorateur simple et robuste
+- Maintenir une qualité de code irréprochable (10/10) et une couverture de tests de 100%
+
+### Impact
+- **Phase 6 complétée** : Système de gestion des services opérationnel
+- Infrastructure prête pour la Phase 7 (Analyseur sémantique)
+- 40 tests supplémentaires garantissent la fiabilité (total : 364 tests)
+- 100% de couverture sur les modules `service_decorator` et `symbol_table`
+- Le décorateur @service fonctionne correctement et marque les fonctions
+- La table des symboles permet l'enregistrement et la recherche de services
+- Découverte automatique des services dans un module avec `inspect`
+- Support complet des signatures de fonctions Python
+- Les services peuvent maintenant être déclarés avec @service
+- Les services peuvent être découverts automatiquement dans un module
+- Les services peuvent être récupérés par nom pour exécution
+- Le projet avance méthodiquement selon le plan de développement
+- Qualité maintenue à 10/10 pylint
+- Prêt pour l'analyse sémantique des appels de service
+
+---
+
 ## 2026-01-21 23:10:20
 
 ### Modifications
