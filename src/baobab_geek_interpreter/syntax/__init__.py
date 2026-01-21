@@ -11,6 +11,7 @@ from baobab_geek_interpreter.syntax.ast_node import (
     ServiceCallNode,
     StringNode,
 )
+from baobab_geek_interpreter.syntax.syntax_analyzer import SyntaxAnalyzer
 
 __all__ = [
     "ASTNode",
@@ -22,4 +23,5 @@ __all__ = [
     "FloatNode",
     "StringNode",
     "ArrayNode",
+    "SyntaxAnalyzer",
 ]
