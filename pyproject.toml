@@ -36,19 +36,18 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 pythonpath = ["src"]
 addopts = [
-    "--cov=src/baobab_cli",
+    "--cov=src/baobab_geek_interpreter",
     "--cov-report=term-missing",
     "--cov-report=html:docs/tests/coverage/htmlcov",
     "--cov-report=xml:docs/tests/coverage/coverage.xml",
     "--cov-report=json:docs/tests/coverage/coverage.json",
     # Seuil ajusté à 88% (objectif: 90%)
-    # Fichiers non couverts: data_model.py (non utilisé), ansi_terminal_io.py (difficile à tester)
     "--cov-fail-under=88",
 ]
 
 [tool.black]
 line-length = 100
-target-version = ["py38", "py39", "py310", "py311", "py312", "py313"]
+target-version = ["py38", "py39", "py310", "py311", "py312"]
 
 [tool.pylint.messages_control]
 disable = [

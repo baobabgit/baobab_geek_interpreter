@@ -1,3 +1,62 @@
+## 2026-01-21 17:22:39
+
+### Modifications
+- **[Phase 1]** Implémentation complète de la hiérarchie d'exceptions
+- Création de `src/baobab_geek_interpreter/__init__.py` (version 0.1.0)
+- Création de `src/baobab_geek_interpreter/exceptions/__init__.py` avec exports
+- Création de `src/baobab_geek_interpreter/exceptions/base_exception.py` :
+  - Classe `BaobabGeekInterpreterException` (classe de base)
+  - Attributs contextuels : message, source, position, line, column
+  - Méthode `__str__()` avec formatage intelligent
+- Création de `src/baobab_geek_interpreter/exceptions/lexical_exception.py` :
+  - Classe `BaobabLexicalAnalyserException`
+- Création de `src/baobab_geek_interpreter/exceptions/syntax_exception.py` :
+  - Classe `BaobabSyntaxAnalyserException`
+- Création de `src/baobab_geek_interpreter/exceptions/semantic_exception.py` :
+  - Classe `BaobabSemanticAnalyserException`
+- Création de `src/baobab_geek_interpreter/exceptions/execution_exception.py` :
+  - Classe `BaobabExecutionException`
+  - Attributs supplémentaires : service_name, original_exception
+  - Méthode `__str__()` surchargée pour inclure le nom du service
+- Création des tests unitaires exhaustifs :
+  - `tests/test_baobab_geek_interpreter/exceptions/test_base_exception.py` (15 tests)
+  - `tests/test_baobab_geek_interpreter/exceptions/test_lexical_exception.py` (6 tests)
+  - `tests/test_baobab_geek_interpreter/exceptions/test_syntax_exception.py` (6 tests)
+  - `tests/test_baobab_geek_interpreter/exceptions/test_semantic_exception.py` (6 tests)
+  - `tests/test_baobab_geek_interpreter/exceptions/test_execution_exception.py` (12 tests)
+- Total : **45 tests unitaires, tous passent** ✅
+- Configuration de l'environnement virtuel `.venv`
+- Installation des dépendances de développement
+- Corrections dans `pyproject.toml` :
+  - Suppression de `py313` dans black target-version
+  - Correction du chemin de couverture (baobab_cli → baobab_geek_interpreter)
+- Utilisation de `Optional` au lieu de `|` pour compatibilité Python 3.8+
+- Validation de la qualité du code :
+  - ✅ black (formatage)
+  - ✅ pylint (score 10/10)
+  - ✅ mypy (pas d'erreur)
+  - ✅ flake8 (pas d'erreur)
+  - ✅ bandit (aucun problème de sécurité)
+
+### Buts
+- Compléter la Phase 1 du plan de développement (Hiérarchie d'exceptions)
+- Établir une gestion d'erreurs robuste et hiérarchisée pour tout le projet
+- Fournir des messages d'erreur contextuels et informatifs
+- Atteindre une couverture de tests élevée (100% sur les exceptions)
+- Valider que tous les outils de qualité sont correctement configurés
+
+### Impact
+- **Phase 1 complétée** : Toutes les exceptions personnalisées sont implémentées et testées
+- Hiérarchie d'exceptions cohérente prête à être utilisée par tous les analyseurs
+- 45 tests unitaires garantissent la fiabilité des exceptions
+- Qualité du code validée par tous les outils (score 10/10 pylint)
+- L'exception `BaobabExecutionException` permet d'encapsuler les erreurs des services
+- Les informations contextuelles (ligne, colonne, position) facilitent le débogage
+- Le projet est prêt pour la Phase 2 (Types de base et structures de données)
+- Configuration de développement opérationnelle avec environnement virtuel
+
+---
+
 ## 2026-01-21 16:41:50
 
 ### Modifications
